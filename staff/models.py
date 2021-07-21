@@ -4,7 +4,7 @@ from django.db.models.fields.related import ForeignKey
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class Employee(models.Model):
+class Staff(models.Model):
     last_name = models.CharField(max_length=20, help_text="Введите фамилию")
     first_name = models.CharField(max_length=20, help_text="Введите имя")
     middle_name = models.CharField(max_length=20, help_text="Введите отчество")
