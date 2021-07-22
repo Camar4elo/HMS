@@ -22,12 +22,21 @@ class Staff(models.Model):
                             unique=True)
     employment_date = DateField(help_text="Введите дату приёма на работу")
     date_of_birth = DateField(help_text="Введите дату рождения")
-    authorization = ForeignKey('Authorization', on_delete=models.SET_NULL,
-                               null=True)
 
     def __str__(self):
         return f'{self.last_name} {self.first_name}, {self.rank}'
 
+    class Meta:
+        verbose_name = "Staff"
+        verbose_name_plural = "Staff"
+
 
 class Rank(models.Model):
     rank = models.CharField(max_length=20, help_text="Введите должность")
+
+    def __str__(self):
+        return f'{self.rank}'
+
+    class Meta:
+        verbose_name = "Rank"
+        verbose_name_plural = "Rank"
