@@ -1,19 +1,21 @@
 from django.db import models
+from datetime import datetime
 
 
 class Tasks(models.Model):
     subject = models.CharField(max_length=150, help_text="Тема сообщения")
     content = models.TextField(help_text="Текст сообщения")
     result = models.TextField(help_text="Результат", null=True, blank=True)
-    sender_id = models.ForeignKey('staff.Staff', related_name='sender',
-                                  on_delete=models.SET_NULL, null=True, )
-    addressee_id = models.ForeignKey('staff.Staff', related_name='addressee',
-                                     on_delete=models.SET_NULL, null=True)
-    send_datetime = models.DateTimeField(help_text="Дата сообщения")
+    sender = models.ForeignKey('staff.Staff', related_name='sender',
+                               on_delete=models.SET_NULL, null=True, )
+    addressee = models.ForeignKey('staff.Staff', related_name='addressee',
+                                  on_delete=models.SET_NULL, null=True)
+    send_datetime = models.DateTimeField(default=datetime.now, blank=True,
+                                         help_text="Дата сообщения")
     closed = models.BooleanField()
 
     def __str__(self):
-        return (f'<{self.subject} {self.sender_id} {self.addressee_id}'
+        return (f'<{self.subject} {self.sender} {self.addressee}'
                 f'{self.send_datetime} {self.closed}>')
 
     class Meta:
@@ -31,7 +33,7 @@ class TasksArchive(models.Model):
     closed = models.BooleanField()
 
     def __str__(self):
-        return (f'<{self.subject} {self.sender_id} {self.addressee_id}'
+        return (f'<{self.subject} {self.sender} {self.addressee}'
                 f'{self.send_datetime} {self.closed}>')
 
     class Meta:
