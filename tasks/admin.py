@@ -4,5 +4,5 @@ from tasks.models import Tasks
 
 @admin.register(Tasks)
 class TasksAdmin(admin.ModelAdmin):
-    list_display = ('subject', 'sender_id', 'addressee_id', 'send_datetime',
+    list_display = ('subject', 'sender', 'addressee', 'send_datetime',
                     'closed')
