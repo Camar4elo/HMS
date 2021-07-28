@@ -17,11 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls.conf import include
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-]
+    path('', RedirectView.as_view(url='/login')),
+    path('tasks/', include('tasks.urls')),
+    path('staff/', include('staff.urls')),
+    # path('schedules/', include('schedules.urls')),
+    # path('analysis/',  include('analysis.urls')),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
