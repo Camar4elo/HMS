@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title%}
+        <title>Task Detail</title>
+{% endblock %}
+
+{% block content %}
+    {{ task.subject }}<br>
+    {{ task.content }}<br>
+    {{ task.result }}<br>
+    {{ task.sender }}<br>
+    {{ task.addressee }}<br>
+    {{ task.send_datetime }}<br>
+    {{ task.closed }}<br>
+{% endblock %}

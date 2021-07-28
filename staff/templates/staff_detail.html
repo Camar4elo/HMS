@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title%}
+        <title>Employee detail</title>
+{% endblock %}
+
+{% block content %}
+    <h5>ФИО: {{ employee.last_name }} {{ employee.first_name }} {{ employee.middle_name }}</h5>
+    <h5>Должность: {{ employee.rank }}</h5>
+    <h5>Никнейм телеграм: {{ employee.telegram_nickname }}</h5>
+    <h5>Номер телефона: {{ employee.phone_number }}</h5>
+    <h5>Персональный email: {{ employee.personal_email }}</h5>
+    <h5>Рабочий email: {{ employee.work_email }}</h5>
+    <h5>Дата приёма на работу: {{ employee.employment_date }}</h5>
+    <h5>Дата рождения: {{ employee.date_of_birth }}</h5>
+{% endblock %}

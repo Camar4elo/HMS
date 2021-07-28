@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title%}
+        <title>Staff</title>
+{% endblock %}
+{% block content %}
+    <ul>
+        {% for employee in staff %}
+            <li>
+                <a href="/staff/detail/{{ employee.pk }}"> {{ employee.first_name }} {{employee.last_name }} </li><a>
+            </li> 
+        {% endfor %}
+    </ul>
+
+{% endblock %}
